@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
+    <stringAttribute key="configurationName" value="Consistency-3P3B3V"/>
+    <intAttribute key="distributedFPSetCount" value="0"/>
+    <stringAttribute key="distributedNetworkInterface" value="114.212.85.22"/>
+    <intAttribute key="distributedNodesCount" value="1"/>
+    <stringAttribute key="distributedTLC" value="off"/>
+    <intAttribute key="fpIndex" value="110"/>
+    <intAttribute key="maxHeapSize" value="25"/>
+    <stringAttribute key="modelBehaviorInit" value=""/>
+    <stringAttribute key="modelBehaviorNext" value=""/>
+    <stringAttribute key="modelBehaviorSpec" value="Spec"/>
+    <intAttribute key="modelBehaviorSpecType" value="1"/>
+    <stringAttribute key="modelBehaviorVars" value="state, msgs"/>
+    <stringAttribute key="modelComments" value="Checking &quot;Consistency&quot;.&#10;3 Participants, 3 Ballots, 3 Values"/>
+    <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
+    <listAttribute key="modelCorrectnessInvariants">
+        <listEntry value="1Consistency"/>
+    </listAttribute>
+    <listAttribute key="modelCorrectnessProperties"/>
+    <intAttribute key="modelEditorOpenTabs" value="2"/>
+    <stringAttribute key="modelExpressionEval" value=""/>
+    <stringAttribute key="modelParameterActionConstraint" value=""/>
+    <listAttribute key="modelParameterConstants">
+        <listEntry value="Participant;;{p1, p2, p3};1;1"/>
+        <listEntry value="Value;;{v1, v2, v3};1;1"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterContraint" value=""/>
+    <listAttribute key="modelParameterDefinitions">
+        <listEntry value="None;;None;1;0"/>
+        <listEntry value="Nat;;0 .. 2;0;0"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterModelValues" value="{}"/>
+    <stringAttribute key="modelParameterNewDefinitions" value=""/>
+    <intAttribute key="numberOfWorkers" value="1"/>
+    <stringAttribute key="result.mail.address" value=""/>
+    <stringAttribute key="specName" value="PaxosStore"/>
+    <stringAttribute key="tlcResourcesProfile" value="local minimal"/>
+</launchConfiguration>

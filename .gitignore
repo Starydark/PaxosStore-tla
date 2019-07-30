@@ -285,3 +285,5 @@ doc/tags
 *.swp
 *.tmp
 *.swo
+
+*_Snapshot_*
