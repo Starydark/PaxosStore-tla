@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>PaxosStore</name>
+	<name>OneVotePaxosStore</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -21,14 +21,9 @@
 			<location>/usr/local/lib/tlaps/FiniteSets.tla</location>
 		</link>
 		<link>
-			<name>PaxosStore.tla</name>
+			<name>OneVotePaxosStore.tla</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/PaxosStore.tla</locationURI>
-		</link>
-		<link>
-			<name>UniversalPaxosStore.tla</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/UniversalPaxosStore.tla</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/OneVotePaxosStore.tla</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

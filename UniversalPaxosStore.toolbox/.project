@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>PaxosStore</name>
+	<name>UniversalPaxosStore</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -19,11 +19,6 @@
 			<name>FiniteSets.tla</name>
 			<type>1</type>
 			<location>/usr/local/lib/tlaps/FiniteSets.tla</location>
-		</link>
-		<link>
-			<name>PaxosStore.tla</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/PaxosStore.tla</locationURI>
 		</link>
 		<link>
 			<name>UniversalPaxosStore.tla</name>

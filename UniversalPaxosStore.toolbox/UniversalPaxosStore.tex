@@ -940,7 +940,7 @@
 \tlatex
 \setboolean{shading}{true}
  \@x{\makebox[0pt][r]{\scriptsize 1\hspace{1em}}}\moduleLeftDash\@xx{
- {\MODULE} PaxosStore}\moduleRightDash\@xx{}%
+ {\MODULE} UniversalPaxosStore}\moduleRightDash\@xx{}%
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
 Specification of the consensus protocol in \ensuremath{PaxosStore}.
@@ -952,7 +952,7 @@ See [\ensuremath{PaxosStore}@\ensuremath{VLDB2017](https\.{:}\.{\slsl}www.vldb.o
 \end{cpar}%
 \vshade{5.0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
-In this version:
+In this version (adopted from ``\ensuremath{PaxosStore.tla}''):
 \end{cpar}%
 \vshade{5.0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
@@ -960,75 +960,74 @@ In this version:
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{-} Message} types: \ensuremath{\@w{Prepare}},
- \ensuremath{\@w{Accept}}, \ensuremath{\@w{ACK}
-}%
+ \ensuremath{\.{-} Message} types (\ensuremath{i.e}.,
+ \ensuremath{\@w{Prepare}}, \ensuremath{\@w{Accept}}, \ensuremath{\@w{ACK}})
+ are deleted.
+ No state flags (such as \ensuremath{\@w{Prepare}}, ``Wait-Prepare'',
+ \ensuremath{\@w{Accept}}, ``Wait-Accept''
+ are needed.
 \end{cpar}%
 \end{lcom}%
- \@x{\makebox[0pt][r]{\scriptsize 13\hspace{1em}} {\EXTENDS} Integers ,\,
+ \@x{\makebox[0pt][r]{\scriptsize 15\hspace{1em}} {\EXTENDS} Integers ,\,
  FiniteSets}%
-\@x{\makebox[0pt][r]{\scriptsize 14\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 15\hspace{1em}} Max ( m ,\, n ) \.{\defeq}
+\@x{\makebox[0pt][r]{\scriptsize 16\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 17\hspace{1em}} Max ( m ,\, n ) \.{\defeq}
  {\IF} m \.{>} n \.{\THEN} m \.{\ELSE} n}%
- \@x{\makebox[0pt][r]{\scriptsize 16\hspace{1em}} Injective ( f ) \.{\defeq}
+ \@x{\makebox[0pt][r]{\scriptsize 18\hspace{1em}} Injective ( f ) \.{\defeq}
  \A\, a ,\, b \.{\in} {\DOMAIN} f \.{:} ( a \.{\neq} b ) \.{\implies} ( f [ a
  ] \.{\neq} f [ b ] )}%
-\@x{\makebox[0pt][r]{\scriptsize 17\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 18\hspace{1em}} {\CONSTANTS}}%
- \@x{\makebox[0pt][r]{\scriptsize 19\hspace{1em}}\@s{16.4} Participant
+\@x{\makebox[0pt][r]{\scriptsize 19\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 20\hspace{1em}} {\CONSTANTS}}%
+ \@x{\makebox[0pt][r]{\scriptsize 21\hspace{1em}}\@s{16.4} Participant
  ,\,\@s{4.1}}%
 \@y{\@s{0}%
  the set of partipants
 }%
 \@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 20\hspace{1em}}\@s{16.4} Value\@s{34.93}}%
+\@x{\makebox[0pt][r]{\scriptsize 22\hspace{1em}}\@s{16.4} Value\@s{34.93}}%
 \@y{\@s{0}%
  the set of possible input values for \ensuremath{Participant} to propose
 }%
 \@xx{}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 22\hspace{1em}} None \.{\defeq} {\CHOOSE} b
+ \@x{\makebox[0pt][r]{\scriptsize 24\hspace{1em}} None \.{\defeq} {\CHOOSE} b
  \.{:} b \.{\notin} Value}%
- \@x{\makebox[0pt][r]{\scriptsize 23\hspace{1em}} NP \.{\defeq} Cardinality (
+ \@x{\makebox[0pt][r]{\scriptsize 25\hspace{1em}} NP \.{\defeq} Cardinality (
  Participant )}%
 \@y{\@s{0}%
  number of \ensuremath{p \.{\in}} Participants
 }%
 \@xx{}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 25\hspace{1em}} Quorum \.{\defeq} \{ Q
+ \@x{\makebox[0pt][r]{\scriptsize 27\hspace{1em}} Quorum \.{\defeq} \{ Q
  \.{\in} {\SUBSET} Participant \.{:} Cardinality ( Q ) \.{*} 2 \.{=} NP \.{+}
  1 \}}%
- \@x{\makebox[0pt][r]{\scriptsize 26\hspace{1em}} {\ASSUME} QuorumAssumption
+ \@x{\makebox[0pt][r]{\scriptsize 28\hspace{1em}} {\ASSUME} QuorumAssumption
  \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 27\hspace{1em}}\@s{16.4} \.{\land}\@s{10.73}
+ \@x{\makebox[0pt][r]{\scriptsize 29\hspace{1em}}\@s{16.4} \.{\land}\@s{10.73}
  \A\, Q \.{\in} Quorum \.{:} Q \.{\subseteq} Participant}%
- \@x{\makebox[0pt][r]{\scriptsize 28\hspace{1em}}\@s{16.4} \.{\land}\@s{10.73}
+ \@x{\makebox[0pt][r]{\scriptsize 30\hspace{1em}}\@s{16.4} \.{\land}\@s{10.73}
  \A\, Q1 ,\, Q2 \.{\in} Quorum \.{:} Q1 \.{\cap} Q2 \.{\neq} \{ \}}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 30\hspace{1em}} Ballot\@s{4.66} \.{\defeq}
+ \@x{\makebox[0pt][r]{\scriptsize 32\hspace{1em}} Ballot\@s{4.66} \.{\defeq}
  Nat}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 32\hspace{1em}} PIndex \.{\defeq} {\CHOOSE}
+ \@x{\makebox[0pt][r]{\scriptsize 34\hspace{1em}} PIndex \.{\defeq} {\CHOOSE}
  f \.{\in} [ Participant \.{\rightarrow} 1 \.{\dotdot} NP ] \.{:} Injective (
- f )\@s{4.1}}%
-\@y{\@s{0}%
- \ensuremath{TODO}: (1) symmetry set\.{?} (2) model
-}%
-\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 33\hspace{1em}} Bals ( p ) \.{\defeq} \{ b
+ f )}%
+ \@x{\makebox[0pt][r]{\scriptsize 35\hspace{1em}} Bals ( p ) \.{\defeq} \{ b
  \.{\in} Ballot \.{:} b \.{\%} NP \.{=} PIndex [ p ] \.{-} 1 \}}%
 \@y{\@s{0}%
  allocate ballots for each \ensuremath{p \.{\in} Participant
 }}%
 \@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 34\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 35\hspace{1em}} State \.{\defeq} [
+\@x{\makebox[0pt][r]{\scriptsize 36\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 37\hspace{1em}} State \.{\defeq} [
  maxBal\@s{4.65} \.{:} Ballot \.{\cup} \{ \.{-} 1 \} ,\,}%
- \@x{\makebox[0pt][r]{\scriptsize 36\hspace{1em}}\@s{41.61} maxVBal \.{:}
+ \@x{\makebox[0pt][r]{\scriptsize 38\hspace{1em}}\@s{41.61} maxVBal \.{:}
  Ballot \.{\cup} \{ \.{-} 1 \} ,\, maxVVal \.{:} Value \.{\cup} \{ None \} ]}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 38\hspace{1em}} InitState \.{\defeq} [
+ \@x{\makebox[0pt][r]{\scriptsize 40\hspace{1em}} InitState \.{\defeq} [
  maxBal \.{\mapsto} \.{-} 1 ,\, maxVBal \.{\mapsto} \.{-} 1 ,\, maxVVal
  \.{\mapsto} None ]}%
 \begin{lcom}{0}%
@@ -1038,16 +1037,9 @@ For simplicity, in this specification, we choose to send the complete state
  processes only the ``partial'' state it needs.
 \end{cpar}%
 \end{lcom}%
- \@x{\makebox[0pt][r]{\scriptsize 44\hspace{1em}} Message \.{\defeq} [
- type\@s{2.69} \.{:} \{\@w{Prepare} ,\,\@w{Accept} ,\,\@w{ACK} \} ,\,}%
- \@x{\makebox[0pt][r]{\scriptsize 45\hspace{1em}}\@s{58.47} from \.{:}
- Participant ,\, to \.{:} {\SUBSET} Participant ,\,}%
-\@y{\@s{0}%
- \ensuremath{TODO}: remove ``to''
-}%
-\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 46\hspace{1em}}\@s{55.69} state\@s{2.41}
- \.{:} [ Participant \.{\rightarrow} State ] ]}%
+ \@x{\makebox[0pt][r]{\scriptsize 46\hspace{1em}} Message \.{\defeq} [ from
+ \.{:} Participant ,\, to \.{:} {\SUBSET} Participant ,\, state \.{:} [
+ Participant \.{\rightarrow} State ] ]}%
 \@x{\makebox[0pt][r]{\scriptsize 47\hspace{1em}}}\midbar\@xx{}%
 \@x{\makebox[0pt][r]{\scriptsize 48\hspace{1em}} {\VARIABLES}}%
 \@x{\makebox[0pt][r]{\scriptsize 49\hspace{1em}}\@s{16.4} state ,\,\@s{4.1}}%
@@ -1096,8 +1088,8 @@ For simplicity, in this specification, we choose to send the complete state
  \@x{\makebox[0pt][r]{\scriptsize 69\hspace{1em}}\@s{16.4} \.{\land}\@s{6.34}
  state \.{'} \.{=} [ state {\EXCEPT} {\bang} [ p ] [ p ] . maxBal \.{=} b ]}%
  \@x{\makebox[0pt][r]{\scriptsize 70\hspace{1em}}\@s{16.4} \.{\land}\@s{6.34}
- Send ( [ type \.{\mapsto}\@w{Prepare} ,\, from \.{\mapsto} p ,\, to
- \.{\mapsto} Participant ,\, state \.{\mapsto} state \.{'} [ p ] ] )}%
+ Send ( [ from \.{\mapsto} p ,\, to \.{\mapsto} Participant ,\, state
+ \.{\mapsto} state \.{'} [ p ] ] )}%
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  \ensuremath{q \.{\in} Participant} updates its own state
@@ -1139,10 +1131,6 @@ For simplicity, in this specification, we choose to send the complete state
  \@x{\makebox[0pt][r]{\scriptsize 88\hspace{1em}}\@s{64.71} {\bang} [ q ] [ q
  ] . maxVVal\@s{0.37} \.{=} {\IF} state [ q ] [ q ] . maxBal \.{\leq} pp .
  maxVBal}%
-\@y{\@s{0}%
- \ensuremath{TODO}: write-once\.{?}
-}%
-\@xx{}%
  \@x{\makebox[0pt][r]{\scriptsize 89\hspace{1em}}\@s{148.57} \.{\THEN} pp .
  maxVVal \.{\ELSE} @ ]\@s{4.1}}%
 \@y{\@s{0}%
@@ -1158,24 +1146,19 @@ For simplicity, in this specification, we choose to send the complete state
 \@x{\makebox[0pt][r]{\scriptsize 93\hspace{1em}} OnMessage ( q ) \.{\defeq}}%
  \@x{\makebox[0pt][r]{\scriptsize 94\hspace{1em}}\@s{16.4} \E\, m \.{\in} msgs
  \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 95\hspace{1em}}\@s{27.72} \.{\land} m . type
- \.{=}\@w{ACK} \.{\implies} m . to \.{=} \{ q \}}%
+ \@x{\makebox[0pt][r]{\scriptsize 95\hspace{1em}}\@s{27.72} \.{\land} q
+ \.{\in} m . to}%
  \@x{\makebox[0pt][r]{\scriptsize 96\hspace{1em}}\@s{27.72} \.{\land} \.{\LET}
  p \.{\defeq} m . from}%
  \@x{\makebox[0pt][r]{\scriptsize 97\hspace{1em}}\@s{38.83} \.{\IN}
  UpdateState ( q ,\, p ,\, m . state [ p ] )}%
  \@x{\makebox[0pt][r]{\scriptsize 98\hspace{1em}}\@s{27.72} \.{\land} {\IF}
- \.{\lor} m . state [ q ] . maxBal \.{<} state \.{'} [ q ] [ q ] .
- maxBal\@s{4.1}}%
-\@y{\@s{0}%
- \ensuremath{TODO}: delete ``if''\.{?}
-}%
-\@xx{}%
+ \.{\lor} m . state [ q ] . maxBal \.{<} state \.{'} [ q ] [ q ] . maxBal}%
  \@x{\makebox[0pt][r]{\scriptsize 99\hspace{1em}}\@s{50.98} \.{\lor} m . state
  [ q ] . maxVBal \.{<} state \.{'} [ q ] [ q ] . maxVBal}%
  \@x{\makebox[0pt][r]{\scriptsize 100\hspace{1em}}\@s{38.83} \.{\THEN} Send (
- [ type \.{\mapsto}\@w{ACK} ,\, from \.{\mapsto} q ,\, to \.{\mapsto} \{ m .
- from \} ,\, state \.{\mapsto} state \.{'} [ q ] ] )}%
+ [ from \.{\mapsto} q ,\, to \.{\mapsto} \{ m . from \} ,\, state \.{\mapsto}
+ state \.{'} [ q ] ] )}%
  \@x{\makebox[0pt][r]{\scriptsize 101\hspace{1em}}\@s{38.83} \.{\ELSE}
  {\UNCHANGED} msgs}%
 \begin{lcom}{0}%
@@ -1187,80 +1170,67 @@ For simplicity, in this specification, we choose to send the complete state
 \end{lcom}%
  \@x{\makebox[0pt][r]{\scriptsize 106\hspace{1em}} Accept ( p ,\, b ,\, v )
  \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 107\hspace{1em}}\@s{16.4} \.{\land} {\lnot}
- \E\, m \.{\in} msgs \.{:}}%
-\@y{\@s{0}%
- \ensuremath{TODO}: delete it\.{?} to allow repeating
- \ensuremath{Phase2a}\.{?}
-}%
-\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 108\hspace{1em}}\@s{41.39} m . type
- \.{=}\@w{Accept} \.{\land} m . state [ p ] . maxBal \.{=} b}%
- \@x{\makebox[0pt][r]{\scriptsize 109\hspace{1em}}\@s{16.4} \.{\land} b
- \.{\in} Bals ( p )\@s{16.4}}%
-\@y{\@s{0}%
- \ensuremath{TODO}: delete it\.{?} to break ``client-restricted config''\.{?}
-}%
-\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 110\hspace{1em}}\@s{16.4} \.{\land} \E\, Q
+ \@x{\makebox[0pt][r]{\scriptsize 107\hspace{1em}}\@s{16.4} \.{\land} b
+ \.{\in} Bals ( p )}%
+ \@x{\makebox[0pt][r]{\scriptsize 108\hspace{1em}}\@s{16.4} \.{\land} \E\, Q
  \.{\in} Quorum \.{:} \A\, q \.{\in} Q \.{:} state [ p ] [ q ] . maxBal \.{=}
  b}%
- \@x{\makebox[0pt][r]{\scriptsize 111\hspace{1em}}\@s{16.4} \.{\land} \.{\lor}
+ \@x{\makebox[0pt][r]{\scriptsize 109\hspace{1em}}\@s{16.4} \.{\land} \.{\lor}
  \A\, q \.{\in} Participant \.{:} state [ p ] [ q ] . maxVBal \.{=} \.{-} 1}%
 \@y{\@s{0}%
  free to pick its own value
 }%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 112\hspace{1em}}\@s{27.51} \.{\lor} \E\, q
+ \@x{\makebox[0pt][r]{\scriptsize 110\hspace{1em}}\@s{27.51} \.{\lor} \E\, q
  \.{\in} Participant \.{:}}%
 \@y{\@s{0}%
  \ensuremath{v} is the value with the highest \ensuremath{maxVBal
 }}%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 113\hspace{1em}}\@s{46.82} \.{\land} state [
+ \@x{\makebox[0pt][r]{\scriptsize 111\hspace{1em}}\@s{46.82} \.{\land} state [
  p ] [ q ] . maxVVal \.{=} v}%
- \@x{\makebox[0pt][r]{\scriptsize 114\hspace{1em}}\@s{46.82} \.{\land} \A\, r
+ \@x{\makebox[0pt][r]{\scriptsize 112\hspace{1em}}\@s{46.82} \.{\land} \A\, r
  \.{\in} Participant \.{:} state [ p ] [ q ] . maxVBal \.{\geq} state [ p ] [
  r ] . maxVBal}%
- \@x{\makebox[0pt][r]{\scriptsize 115\hspace{1em}}\@s{16.4} \.{\land} state
+ \@x{\makebox[0pt][r]{\scriptsize 113\hspace{1em}}\@s{16.4} \.{\land} state
  \.{'} \.{=} [ state {\EXCEPT} {\bang} [ p ] [ p ] . maxVBal \.{=} b ,\,}%
- \@x{\makebox[0pt][r]{\scriptsize 116\hspace{1em}}\@s{130.84} {\bang} [ p ] [
+ \@x{\makebox[0pt][r]{\scriptsize 114\hspace{1em}}\@s{130.84} {\bang} [ p ] [
  p ] . maxVVal\@s{0.37} \.{=} v ]}%
- \@x{\makebox[0pt][r]{\scriptsize 117\hspace{1em}}\@s{16.4} \.{\land} Send ( [
- type \.{\mapsto}\@w{Accept} ,\, from \.{\mapsto} p ,\, to \.{\mapsto}
- Participant ,\, state \.{\mapsto} state \.{'} [ p ] ] )}%
-\@x{\makebox[0pt][r]{\scriptsize 118\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 119\hspace{1em}} Next \.{\defeq} \E\, p
+ \@x{\makebox[0pt][r]{\scriptsize 115\hspace{1em}}\@s{16.4} \.{\land} Send ( [
+ from \.{\mapsto} p ,\, to \.{\mapsto} Participant ,\, state \.{\mapsto}
+ state \.{'} [ p ] ] )}%
+\@x{\makebox[0pt][r]{\scriptsize 116\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 117\hspace{1em}} Next \.{\defeq} \E\, p
  \.{\in} Participant \.{:} \.{\lor} OnMessage ( p )}%
- \@x{\makebox[0pt][r]{\scriptsize 120\hspace{1em}}\@s{124.23} \.{\lor} \E\, b
+ \@x{\makebox[0pt][r]{\scriptsize 118\hspace{1em}}\@s{124.23} \.{\lor} \E\, b
  \.{\in} Ballot \.{:} \.{\lor} Prepare ( p ,\, b )}%
- \@x{\makebox[0pt][r]{\scriptsize 121\hspace{1em}}\@s{196.61} \.{\lor} \E\, v
+ \@x{\makebox[0pt][r]{\scriptsize 119\hspace{1em}}\@s{196.61} \.{\lor} \E\, v
  \.{\in} Value \.{:} Accept ( p ,\, b ,\, v )}%
- \@x{\makebox[0pt][r]{\scriptsize 122\hspace{1em}} Spec\@s{1.46} \.{\defeq}
+ \@x{\makebox[0pt][r]{\scriptsize 120\hspace{1em}} Spec\@s{1.46} \.{\defeq}
  Init \.{\land} {\Box} [ Next ]_{ vars}}%
-\@x{\makebox[0pt][r]{\scriptsize 123\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 124\hspace{1em}} ChosenP ( p ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 121\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 122\hspace{1em}} ChosenP ( p ) \.{\defeq}}%
 \@y{\@s{0}%
  the set of values chosen by \ensuremath{p \.{\in} Participant
 }}%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 125\hspace{1em}}\@s{16.4} \{ v \.{\in} Value
+ \@x{\makebox[0pt][r]{\scriptsize 123\hspace{1em}}\@s{16.4} \{ v \.{\in} Value
  \.{:} \E\, b \.{\in} Ballot \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 126\hspace{1em}}\@s{85.11} \E\, Q \.{\in}
+ \@x{\makebox[0pt][r]{\scriptsize 124\hspace{1em}}\@s{85.11} \E\, Q \.{\in}
  Quorum \.{:} \A\, q \.{\in} Q \.{:} \.{\land} state [ p ] [ q ] . maxVBal
  \.{=} b}%
- \@x{\makebox[0pt][r]{\scriptsize 127\hspace{1em}}\@s{202.26} \.{\land} state
+ \@x{\makebox[0pt][r]{\scriptsize 125\hspace{1em}}\@s{202.26} \.{\land} state
  [ p ] [ q ] . maxVVal\@s{0.37} \.{=} v \}}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 129\hspace{1em}} chosen \.{\defeq} {\UNION}
+ \@x{\makebox[0pt][r]{\scriptsize 127\hspace{1em}} chosen \.{\defeq} {\UNION}
  \{ ChosenP ( p ) \.{:} p \.{\in} Participant \}}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 131\hspace{1em}} Consistency \.{\defeq}
+ \@x{\makebox[0pt][r]{\scriptsize 129\hspace{1em}} Consistency \.{\defeq}
  Cardinality ( chosen ) \.{\leq} 1}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 133\hspace{1em}} {\THEOREM} Spec
+ \@x{\makebox[0pt][r]{\scriptsize 131\hspace{1em}} {\THEOREM} Spec
  \.{\implies} {\Box} Consistency}%
-\@x{\makebox[0pt][r]{\scriptsize 134\hspace{1em}}}\bottombar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 132\hspace{1em}}}\bottombar\@xx{}%
 \setboolean{shading}{false}
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
@@ -1268,7 +1238,7 @@ For simplicity, in this specification, we choose to send the complete state
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  \ensuremath{\.{\,\backslash\,}\.{*}} Last modified \ensuremath{Wed}
- \ensuremath{Jul} 31 14:35:02 \ensuremath{CST} 2019 by \ensuremath{hengxin
+ \ensuremath{Jul} 31 15:00:12 \ensuremath{CST} 2019 by \ensuremath{hengxin
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
