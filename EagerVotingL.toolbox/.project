@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>PaxosStore</name>
+	<name>EagerVotingL</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -18,12 +18,17 @@
 		<link>
 			<name>Consensus.tla</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Consensus.tla</locationURI>
+			<location>/home/hengxin/git-projects/paxosstore-tla/Consensus.tla</location>
 		</link>
 		<link>
 			<name>EagerVoting.tla</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/EagerVoting.tla</locationURI>
+			<location>/home/hengxin/git-projects/paxosstore-tla/EagerVoting.tla</location>
+		</link>
+		<link>
+			<name>EagerVotingL.tla</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/EagerVotingL.tla</locationURI>
 		</link>
 		<link>
 			<name>FiniteSets.tla</name>
@@ -36,9 +41,9 @@
 			<location>/usr/local/lib/tlaps/NaturalsInduction.tla</location>
 		</link>
 		<link>
-			<name>PaxosStore.tla</name>
+			<name>Sets.tla</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/PaxosStore.tla</locationURI>
+			<location>/home/hengxin/git-projects/paxosstore-tla/Sets.tla</location>
 		</link>
 		<link>
 			<name>TLAPS.tla</name>
@@ -46,14 +51,9 @@
 			<location>/usr/local/lib/tlaps/TLAPS.tla</location>
 		</link>
 		<link>
-			<name>UniversalPaxosStore.tla</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/UniversalPaxosStore.tla</locationURI>
-		</link>
-		<link>
 			<name>Voting.tla</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Voting.tla</locationURI>
+			<location>/home/hengxin/git-projects/paxosstore-tla/Voting.tla</location>
 		</link>
 	</linkedResources>
 </projectDescription>
