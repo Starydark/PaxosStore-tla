@@ -2,13 +2,14 @@
 (*
 Specification of the consensus protocol in PaxosStore.
 
-See [PaxosStore@VLDB2017](https://www.vldb.org/pvldb/vol10/p1730-lin.pdf) 
-by Tencent.
+See [PaxosStore@VLDB2017](https://www.vldb.org/pvldb/vol10/p1730-lin.pdf) by Tencent.
 
 In this version (adopted from "PaxosStore.tla"):
 
 - Client-restricted config (Ballot)
 - Message types (i.e., "Prepare", "Accept", "ACK") are deleted.
+No state flags (such as "Prepare", "Wait-Prepare", "Accept", "Wait-Accept"
+are needed.
 *)
 EXTENDS Integers, FiniteSets
 -----------------------------------------------------------------------------
@@ -22,15 +23,15 @@ CONSTANTS
 None == CHOOSE b : b \notin Value
 NP == Cardinality(Participant) \* number of p \in Participants
 
-Quorum == {Q \in SUBSET Participant : Cardinality(Q) * 2 = NP + 1}
+Quorum == {Q \in SUBSET Participant : Cardinality(Q) * 2 >= NP + 1}
 ASSUME QuorumAssumption == 
     /\ \A Q \in Quorum : Q \subseteq Participant
     /\ \A Q1, Q2 \in Quorum : Q1 \cap Q2 # {}
 
 Ballot == Nat
 
-PIndex == CHOOSE f \in [Participant -> 1 .. NP] : Injective(f)  \* TODO: (1) symmetry set? (2) model
-Bals(p) == {b \in Ballot : b % NP = PIndex[p] - 1} \* allocate ballots for each p \in Participant
+PIndex == CHOOSE f \in [Participant -> 1 .. NP] : Injective(f)
+Bals(p) == {b \in Ballot : b % NP = PIndex[p] - 1} \* allocate ballots for p \in Participant
 -----------------------------------------------------------------------------
 State == [maxBal: Ballot \cup {-1},
          maxVBal: Ballot \cup {-1}, maxVVal: Value \cup {None}]
@@ -83,7 +84,7 @@ UpdateState(q, p, pp) ==
                 ![q][q].maxBal = Max(@, pp.maxBal),
                 ![q][q].maxVBal = IF state[q][q].maxBal <= pp.maxVBal 
                                   THEN pp.maxVBal ELSE @,  \* make promise
-                ![q][q].maxVVal = IF state[q][q].maxBal <= pp.maxVBal \* TODO: write-once?
+                ![q][q].maxVVal = IF state[q][q].maxBal <= pp.maxVBal
                                   THEN pp.maxVVal ELSE @]  \* accept
 (*
 q \in Participant receives and processes a message in Message.
@@ -93,7 +94,7 @@ OnMessage(q) ==
         /\ q \in m.to
         /\ LET p == m.from
            IN  UpdateState(q, p, m.state[p])
-        /\ IF \/ m.state[q].maxBal < state'[q][q].maxBal  \* TODO: delete "if"?
+        /\ IF \/ m.state[q].maxBal < state'[q][q].maxBal
               \/ m.state[q].maxVBal < state'[q][q].maxVBal
            THEN Send([from |-> q, to |-> {m.from}, state |-> state'[q]]) 
            ELSE UNCHANGED msgs
@@ -102,14 +103,13 @@ p \in Participant starts the accept phase by issuing the ballot b \in Ballot
 with value v \in Value.
 *)
 Accept(p, b, v) == 
-    /\ b \in Bals(p)     \* TODO: delete it? to break "client-restricted config"?
+    /\ b \in Bals(p)
     /\ \E Q \in Quorum : \A q \in Q : state[p][q].maxBal = b
     /\ \/ \A q \in Participant : state[p][q].maxVBal = -1 \* free to pick its own value
        \/ \E q \in Participant : \* v is the value with the highest maxVBal
             /\ state[p][q].maxVVal = v 
             /\ \A r \in Participant: state[p][q].maxVBal >= state[p][r].maxVBal
-    /\ state' = [state EXCEPT ![p][p].maxVBal = b,
-                              ![p][p].maxVVal = v]
+    /\ state' = [state EXCEPT ![p][p].maxVBal = b, ![p][p].maxVVal = v] \* accept
     /\ Send([from |-> p, to |-> Participant, state |-> state'[p]])
 ---------------------------------------------------------------------------
 Next == \E p \in Participant : \/ OnMessage(p)
@@ -117,19 +117,20 @@ Next == \E p \in Participant : \/ OnMessage(p)
                                                     \/ \E v \in Value : Accept(p, b, v)
 Spec == Init /\ [][Next]_vars
 ---------------------------------------------------------------------------
+(*
+UniversalPaxosStore satisfies the Consistency property.
+*)
 ChosenP(p) == \* the set of values chosen by p \in Participant
     {v \in Value : \E b \in Ballot : 
                        \E Q \in Quorum: \A q \in Q: /\ state[p][q].maxVBal = b
                                                     /\ state[p][q].maxVVal = v}
-
 chosen == UNION {ChosenP(p) : p \in Participant}
 
 Consistency == Cardinality(chosen) <= 1         
-
 THEOREM Spec => []Consistency
 =============================================================================
 \* Modification History
-\* Last modified Wed Jul 31 14:47:58 CST 2019 by hengxin
+\* Last modified Wed Aug 14 18:44:03 CST 2019 by hengxin
 \* Last modified Mon Jul 22 13:59:15 CST 2019 by pure_
 \* Last modified Mon Jun 03 21:26:09 CST 2019 by stary
 \* Last modified Wed May 09 21:39:31 CST 2018 by dell

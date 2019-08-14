@@ -1,4 +1,9 @@
 ---------------------------- MODULE EagerVotingL ----------------------------
+(*
+ERROR: The THEOREM in this module does NOT hold:
+ShowsSafeAt(Q, b, v) may hold in EagerVoting
+but not in Voting with lazyMaxBal <- maxBal.
+*)
 EXTENDS EagerVoting
 -----------------------------------------------------------------------------
 VARIABLE lazyMaxBal
@@ -31,5 +36,5 @@ V == INSTANCE Voting WITH maxBal <- lazyMaxBal
 THEOREM SpecL => V!Spec
 =============================================================================
 \* Modification History
-\* Last modified Tue Aug 13 21:26:35 CST 2019 by hengxin
+\* Last modified Wed Aug 14 10:33:29 CST 2019 by hengxin
 \* Created Tue Aug 13 20:16:36 CST 2019 by hengxin
