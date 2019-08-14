@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
+    <stringAttribute key="configurationName" value="Consistency-2P2B2V_SnapShot_1565779534543"/>
+    <intAttribute key="distributedFPSetCount" value="0"/>
+    <stringAttribute key="distributedNetworkInterface" value="114.212.85.22"/>
+    <intAttribute key="distributedNodesCount" value="1"/>
+    <stringAttribute key="distributedTLC" value="off"/>
+    <intAttribute key="fpIndex" value="38"/>
+    <intAttribute key="maxHeapSize" value="25"/>
+    <stringAttribute key="modelBehaviorInit" value=""/>
+    <stringAttribute key="modelBehaviorNext" value=""/>
+    <stringAttribute key="modelBehaviorSpec" value="Spec"/>
+    <intAttribute key="modelBehaviorSpecType" value="1"/>
+    <stringAttribute key="modelBehaviorVars" value="state, msgs"/>
+    <stringAttribute key="modelComments" value="Checking Consistency&#10;2P2B2V: 2 Participants, 2 Ballots, 2 Values&#10;&#10;WARNING: Accept has not ever been enabled! (TODO: to verify it!)&#10;&#10;Checking Results: Correct&#10;9 diameter, 218 states, 37 distinct states"/>
+    <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
+    <listAttribute key="modelCorrectnessInvariants">
+        <listEntry value="1Consistency"/>
+    </listAttribute>
+    <listAttribute key="modelCorrectnessProperties"/>
+    <intAttribute key="modelEditorOpenTabs" value="2"/>
+    <stringAttribute key="modelExpressionEval" value=""/>
+    <stringAttribute key="modelParameterActionConstraint" value=""/>
+    <listAttribute key="modelParameterConstants">
+        <listEntry value="Participant;;{p1, p2};1;1"/>
+        <listEntry value="Value;;{v1, v2};1;1"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterContraint" value=""/>
+    <listAttribute key="modelParameterDefinitions">
+        <listEntry value="None;;None;1;0"/>
+        <listEntry value="Nat;;0 .. 1;0;0"/>
+    </listAttribute>
+    <stringAttribute key="modelParameterModelValues" value="{}"/>
+    <stringAttribute key="modelParameterNewDefinitions" value=""/>
+    <intAttribute key="numberOfWorkers" value="1"/>
+    <stringAttribute key="result.mail.address" value=""/>
+    <stringAttribute key="specName" value="UniversalPaxosStore"/>
+    <stringAttribute key="tlcResourcesProfile" value="local minimal"/>
+</launchConfiguration>

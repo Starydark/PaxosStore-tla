@@ -22,7 +22,7 @@ CONSTANTS
 None == CHOOSE b : b \notin Value
 NP == Cardinality(Participant) \* number of p \in Participants
 
-Quorum == {Q \in SUBSET Participant : Cardinality(Q) * 2 = NP + 1}
+Quorum == {Q \in SUBSET Participant : Cardinality(Q) * 2 >= NP + 1}
 ASSUME QuorumAssumption == 
     /\ \A Q \in Quorum : Q \subseteq Participant
     /\ \A Q1, Q2 \in Quorum : Q1 \cap Q2 # {}
@@ -133,7 +133,7 @@ Consistency == Cardinality(chosen) <= 1
 THEOREM Spec => []Consistency
 =============================================================================
 \* Modification History
-\* Last modified Wed Jul 31 14:35:02 CST 2019 by hengxin
+\* Last modified Wed Aug 14 18:44:24 CST 2019 by hengxin
 \* Last modified Mon Jul 22 13:59:15 CST 2019 by pure_
 \* Last modified Mon Jun 03 21:26:09 CST 2019 by stary
 \* Last modified Wed May 09 21:39:31 CST 2018 by dell

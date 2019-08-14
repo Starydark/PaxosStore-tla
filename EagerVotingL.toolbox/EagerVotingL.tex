@@ -941,60 +941,69 @@
 \setboolean{shading}{true}
  \@x{\makebox[0pt][r]{\scriptsize 1\hspace{1em}}}\moduleLeftDash\@xx{
  {\MODULE} EagerVotingL}\moduleRightDash\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 2\hspace{1em}} {\EXTENDS} EagerVoting}%
-\@x{\makebox[0pt][r]{\scriptsize 3\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 4\hspace{1em}} {\VARIABLE} lazyMaxBal}%
+\begin{lcom}{0}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+ERROR: The \ensuremath{{\THEOREM}} in this module does NOT hold:
+ \ensuremath{ShowsSafeAt(Q,\, b,\, v)} may hold in \ensuremath{EagerVoting
+ } but not in \ensuremath{Voting} with \ensuremath{lazyMaxBal \.{\leftarrow}
+ maxBal}.
+\end{cpar}%
+\end{lcom}%
+\@x{\makebox[0pt][r]{\scriptsize 7\hspace{1em}} {\EXTENDS} EagerVoting}%
+\@x{\makebox[0pt][r]{\scriptsize 8\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 9\hspace{1em}} {\VARIABLE} lazyMaxBal}%
 \@pvspace{8.0pt}%
-\@x{\makebox[0pt][r]{\scriptsize 6\hspace{1em}} TypeOKL \.{\defeq}}%
-\@x{\makebox[0pt][r]{\scriptsize 7\hspace{1em}}\@s{16.4} \.{\land} TypeOK}%
- \@x{\makebox[0pt][r]{\scriptsize 8\hspace{1em}}\@s{16.4} \.{\land} lazyMaxBal
- \.{\in} [ Acceptor \.{\rightarrow} Ballot \.{\cup} \{ \.{-} 1 \} ]}%
-\@x{\makebox[0pt][r]{\scriptsize 9\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 10\hspace{1em}} InitL \.{\defeq}}%
-\@x{\makebox[0pt][r]{\scriptsize 11\hspace{1em}}\@s{16.4} \.{\land} Init}%
- \@x{\makebox[0pt][r]{\scriptsize 12\hspace{1em}}\@s{16.4} \.{\land}
+\@x{\makebox[0pt][r]{\scriptsize 11\hspace{1em}} TypeOKL \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 12\hspace{1em}}\@s{16.4} \.{\land} TypeOK}%
+ \@x{\makebox[0pt][r]{\scriptsize 13\hspace{1em}}\@s{16.4} \.{\land}
+ lazyMaxBal \.{\in} [ Acceptor \.{\rightarrow} Ballot \.{\cup} \{ \.{-} 1 \}
+ ]}%
+\@x{\makebox[0pt][r]{\scriptsize 14\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 15\hspace{1em}} InitL \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 16\hspace{1em}}\@s{16.4} \.{\land} Init}%
+ \@x{\makebox[0pt][r]{\scriptsize 17\hspace{1em}}\@s{16.4} \.{\land}
  lazyMaxBal \.{=} [ a \.{\in} Acceptor \.{\mapsto} \.{-} 1 ]}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 14\hspace{1em}} IncreaseMaxBalL ( a ,\, b )
+ \@x{\makebox[0pt][r]{\scriptsize 19\hspace{1em}} IncreaseMaxBalL ( a ,\, b )
  \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 15\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 20\hspace{1em}}\@s{16.4} \.{\land}
  IncreaseMaxBal ( a ,\, b )}%
- \@x{\makebox[0pt][r]{\scriptsize 16\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 21\hspace{1em}}\@s{16.4} \.{\land}
  lazyMaxBal \.{'} \.{=} [ lazyMaxBal {\EXCEPT} {\bang} [ a ] \.{=} b ]}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 18\hspace{1em}} VoteForL ( a ,\, b ,\, v )
+ \@x{\makebox[0pt][r]{\scriptsize 23\hspace{1em}} VoteForL ( a ,\, b ,\, v )
  \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 19\hspace{1em}}\@s{16.4} \.{\land} VoteFor (
+ \@x{\makebox[0pt][r]{\scriptsize 24\hspace{1em}}\@s{16.4} \.{\land} VoteFor (
  a ,\, b ,\, v )}%
- \@x{\makebox[0pt][r]{\scriptsize 20\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 25\hspace{1em}}\@s{16.4} \.{\land}
  lazyMaxBal \.{'} \.{=} [ lazyMaxBal {\EXCEPT} {\bang} [ a ] \.{=} b ]}%
-\@x{\makebox[0pt][r]{\scriptsize 21\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 22\hspace{1em}} NextL \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 23\hspace{1em}}\@s{16.4} \E\, a \.{\in}
+\@x{\makebox[0pt][r]{\scriptsize 26\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 27\hspace{1em}} NextL \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 28\hspace{1em}}\@s{16.4} \E\, a \.{\in}
  Acceptor ,\, b \.{\in} Ballot \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 24\hspace{1em}}\@s{27.72} \.{\lor}
+ \@x{\makebox[0pt][r]{\scriptsize 29\hspace{1em}}\@s{27.72} \.{\lor}
  IncreaseMaxBalL ( a ,\, b )}%
- \@x{\makebox[0pt][r]{\scriptsize 25\hspace{1em}}\@s{27.72} \.{\lor} \E\, v
+ \@x{\makebox[0pt][r]{\scriptsize 30\hspace{1em}}\@s{27.72} \.{\lor} \E\, v
  \.{\in} Value \.{:} VoteForL ( a ,\, b ,\, v )}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 27\hspace{1em}} SpecL \.{\defeq} InitL
+ \@x{\makebox[0pt][r]{\scriptsize 32\hspace{1em}} SpecL \.{\defeq} InitL
  \.{\land} {\Box} [ NextL ]_{ {\langle} votes ,\, maxBal ,\, lazyMaxBal
  {\rangle}}}%
-\@x{\makebox[0pt][r]{\scriptsize 28\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 29\hspace{1em}} V \.{\defeq} {\INSTANCE}
+\@x{\makebox[0pt][r]{\scriptsize 33\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 34\hspace{1em}} V \.{\defeq} {\INSTANCE}
  Voting {\WITH} maxBal \.{\leftarrow} lazyMaxBal}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 31\hspace{1em}} {\THEOREM} SpecL
+ \@x{\makebox[0pt][r]{\scriptsize 36\hspace{1em}} {\THEOREM} SpecL
  \.{\implies} V {\bang} Spec}%
-\@x{\makebox[0pt][r]{\scriptsize 32\hspace{1em}}}\bottombar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 37\hspace{1em}}}\bottombar\@xx{}%
 \setboolean{shading}{false}
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
 \ensuremath{\.{\,\backslash\,}}* Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Tue}
- \ensuremath{Aug} 13 21:26:35 \ensuremath{CST} 2019 by \ensuremath{hengxin
+ \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Wed}
+ \ensuremath{Aug} 14 10:33:29 \ensuremath{CST} 2019 by \ensuremath{hengxin
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
