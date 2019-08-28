@@ -106,7 +106,7 @@ with value v \in Value.
 *)
 Accept(p, b, v) == 
     /\ b \in Bals(p)
-    /\ state[p][p].maxVBal # b
+    /\ state[p][p].maxVBal < b 
     /\ \E Q \in Quorum : \* pick the value from the quorum
        /\ \A q \in Q : state[p][q].maxBal = b
        /\ \/ \A q \in Q : state[p][q].maxVBal = -1 \* free to pick its own value
@@ -140,7 +140,7 @@ Consistency == Cardinality(chosen) <= 1
 THEOREM Spec => []Consistency
 =============================================================================
 \* Modification History
-\* Last modified Wed Aug 28 10:34:30 CST 2019 by pure_
+\* Last modified Wed Aug 28 22:39:53 CST 2019 by pure_
 \* Last modified Wed Jul 31 15:00:12 CST 2019 by hengxin
 \* Last modified Mon Jun 03 21:26:09 CST 2019 by stary
 \* Last modified Wed May 09 21:39:31 CST 2018 by dell
