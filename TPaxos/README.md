@@ -14,3 +14,7 @@
 ​	添加了这两个条件后，严格限制了Accept动作的执行时间，当且仅当b对应的参与者通过了prepare请求并且它**没有对更高的编号make promise**。Accept阶段相当于Paxos中的P2a+一个P2b，相对于Paxos的p2a阶段由于p2b加了限制。
 
 ​	对于原TPaxos算法而言，文字描述的是经过了issue($m_i$)后等到了多数派的认可后可以进行issue($P_i$)，如果这两个动作之间发生了OnMessage并make promise，能不能进行issue($P_i$)?
+
+​	找到一个反例，这个时候不能进行issueP
+
+![1567328013477](C:\Users\pure_\AppData\Roaming\Typora\typora-user-images\1567328013477.png)
