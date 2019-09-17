@@ -13,12 +13,14 @@ While constructing specification of the consensus algorithm TPaxos in PaxosStore
 - TPaxosWithVotes.tla: the refinement mapping of TPaxos refine Voting.
 - TPaxosAPWithVotes.tla: the refinement mapping of TPaxosAP refine EagerVoting.
 - EagerVoting.tla: a specification that is equivalent to Voting.  
+- Voting.tla: a specification introduce by Lamport in paper [Byzanting Paxos by Refinement](http://lamport.azurewebsites.net/pubs/web-byzpaxos.pdf).
+- Consensus.tla: a specification that Voting implements it.
 
 #### Refinement relation
 
 ![RefinementRelation](./fig/RefinementRelation.png)
 
-### Module checking with TLC
+### Model checking with TLC
 
 The experiment refers to [TPaxosExperiment](https://github.com/Starydark/TPaxosExperiment).
 
