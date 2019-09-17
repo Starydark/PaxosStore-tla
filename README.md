@@ -16,7 +16,7 @@ While constructing specification of the consensus algorithm TPaxos in PaxosStore
 
 #### Refinement relation
 
-![RefinementRelation](../PaxosStore-tla/fig/RefinementRelation.png)
+![RefinementRelation](./fig/RefinementRelation.png)
 
 ### Module checking with TLC
 
