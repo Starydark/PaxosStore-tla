@@ -1,0 +1,116 @@
+% file: tlc-op-awset-table.tex
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\usepackage{pdfpages}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{cases}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{setspace}
+\SetKwBlock{Begin}{Upon}{end}
+\usepackage{diagbox}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage{multirow}
+\newcommand{\incell}[2]{\begin{tabular}[c]{@{}c@{}}#1\\ #2\end{tabular}}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\newcommand{\TLA}{TLA$^+$}
+\begin{document}
+	% \usepackage{graphicx}
+	\begin{table}[t]
+		\caption{Model checking results of verifying that TPaxos satisfies Consistency}
+		\label{tbl:tlc-opawset}
+		%\title{Model checking results of verifying that TPaxos satisfies Consistency}
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $20$       & $27809$            & $7991$        	   & $0:00:01$    \\ \hline
+				$(2, 2, 3)$     & $31$       & $69954174$         & $12107912$         & $0:07:03$    \\ \hline
+				$(2, 4, 2)$     & $20$       & $27945$        	  & $7991$        	   & $0:00:02$    \\ \hline
+				$(2, 4, 3)$     & $31$       & $69966456$         & $12107912$         & $0:17:35$    \\ \hline
+				$(3, 2, 2)$     & $21$       & $322114689$        & $100000019$        & $0:45:04$    \\ \hline
+				$(3, 2, 3)$     & $18$       & $270946706$        & $100000022$        & $0:42:09$    \\ \hline
+				$(3, 4, 2)$     & $22$       & $319890347$        & $100000023$        & $2:38:37$    \\ \hline
+				$(3, 4, 3)$     & $17$       & $279673321$        & $100000031$        & $2:28:30$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+	\begin{table}[t]
+		\caption{Model checking results of verifying that TPaxosAP satisfies Consistency}
+		\label{tbl:tlc-opawset}
+		
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $20$       & $27809$            & $7991$            & $0:00:01$    \\ \hline
+				$(2, 2, 3)$     & $31$       & $69954296$        & $12107912$        & $0:06:52$    \\ \hline
+				$(2, 4, 2)$     & $20$       & $27945$           & $7991$        & $0:00:02$    \\ \hline
+				$(2, 4, 3)$     & $31$       & $69966578$        & $12107912$        & $0:18:20$    \\ \hline
+				$(3, 2, 2)$     & $21$       & $329426700$        & $100602814$        & $0:44:04$    \\ \hline
+				$(3, 2, 3)$     & $19$       & $274590666$        & $101397482$        & $0:42:03$    \\ \hline
+				$(3, 4, 2)$     & $21$       & $323929358$        & $100147908$        & $2:40:06$    \\ \hline
+				$(3, 4, 3)$     & $17$       & $278887421$        & $100000024$        & $2:28:05$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+	\begin{table}[t]
+		%\caption{Model checking results of verifying that OpAWSet satisfies $SEC$.}
+		\label{tbl:tlc-opawset}
+		\title{text}
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $20$       & $27809$        & $7991$        & $0:00:02$    \\ \hline
+				$(2, 2, 3)$     & $31$       & $69954174$        & $12107912$        & $0:12:32$    \\ \hline
+				$(2, 4, 2)$     & $20$       & $27945$        & $7991$        & $0:00:02$    \\ \hline
+				$(2, 4, 3)$     & $31$       & $69966456$        & $12107912$        & $0:55:24$    \\ \hline
+				$(3, 2, 2)$     & $21$       & $321158078$        & $100000010$        & $0:48:36$    \\ \hline
+				$(3, 2, 3)$     & $17$       & $268108874$        & $100000034$        & $1:10:50$    \\ \hline
+				$(3, 4, 2)$     & $22$       & $316078356$        & $100000012$        & $12:56:45$    \\ \hline
+				$(3, 4, 3)$     & $17$       & $278338521$        & $100000015$        & $11:08:10$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+	\begin{table}[t]
+		%\caption{Model checking results of verifying that OpAWSet satisfies $SEC$.}
+		\label{tbl:tlc-opawset}
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $20$       & $27809$        & $7991$        & $0:00:01$   \\ \hline
+				$(2, 2, 3)$     & $31$       & $69954296$        & $12107912$        & $0:15:42$    \\ \hline
+				$(2, 4, 2)$     & $20$       & $27945$        & $7991$        & $0:00:03$    \\ \hline
+				$(2, 4, 3)$     & $31$       & $69966578$        & $12107912$        & $0:59:24$    \\ \hline
+				$(3, 2, 2)$     & $22$       & $315969776$        & $100254890$        & $2:09:05$    \\ \hline
+				$(3, 2, 3)$     & $17$       & $267572227$        & $100000032$        & $2:11:25$    \\ \hline
+				$(3, 4, 2)$     & $22$       & $318518236$        & $100000012$        & $13:13:31$    \\ \hline
+				$(3, 4, 3)$     & $17$       & $278245333$        & $100000036$        & $11:31:35$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+\end{document}
