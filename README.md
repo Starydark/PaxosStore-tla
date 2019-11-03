@@ -2,7 +2,7 @@
 
 A project of using <a href="http://lamport.azurewebsites.net/tla/tla.html">TLA<sup>+</sup> files</a> to model check the correctness of the consensus algorithm in the [PaxosStore@VLDB2017](http://www.vldb.org/pvldb/vol10/p1730-lin.pdf) paper and the open-source [Tencent/paxosstore](https://github.com/Tencent/paxosstore).
 
-### TLA+ module
+### Specification
 
 While constructing specification of the consensus algorithm TPaxos in PaxosStore, we uncover a crucial but sutble detail in TPaxos which is not fully clarified, called TPaxosAP. We verify the correctness of both TPaxos and TPaxosAP, and  establish the refinement mappings from TPaxos to Voting and from TPaxosAP to EagerVoting(equivalent to Voting).
 
@@ -18,11 +18,13 @@ While constructing specification of the consensus algorithm TPaxos in PaxosStore
 
 #### Refinement relation
 
-![RefinementRelation](./fig/RefinementRelation.png)
+![RefinementRelation](./specification/fig/RefinementRelation.png)
 
-### Model checking with TLC
+### Experiment
 
-The experiment refers to [TPaxosExperiment](https://github.com/Starydark/TPaxosExperiment).
+We prove the refinement relation using the method of model checking. The details refers to [experiment](https://github.com/Starydark/Paxosstore-tla/experiment).
 
- PS. [here](https://github.com/JYwellin/CRDT-TLA) is a similar work that provides a framework to specify and verify CRDT Protocols using TLA+.
+
+### Others
+PS. [here](https://github.com/JYwellin/CRDT-TLA) is a similar work that provides a framework to specify and verify CRDT Protocols using TLA+.
 
