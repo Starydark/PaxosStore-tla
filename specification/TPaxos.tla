@@ -32,6 +32,8 @@ ASSUME QuorumAssumption ==
 
 Ballot == Nat
 
+MaxBallot == Cardinality(Ballot) - 1
+
 PIndex == CHOOSE f \in [Participant -> 1 .. NP] : Injective(f)
 Bals(p) == {b \in Ballot : b % NP = PIndex[p] - 1} \* allocate ballots for each p \in Participant
 -----------------------------------------------------------------------------
@@ -68,7 +70,7 @@ Prepare(p, b) ==
     /\ b \in Bals(p)
     /\ state[p][p].maxBal < b
     /\ state' = [state EXCEPT ![p][p].maxBal = b]
-    /\ Send([from |-> p, to |-> Participant, state |-> state'[p]])                 
+    /\ Send([from |-> p, to |-> Participant \ {p}, state |-> state'[p]])                 
 (*
 q \in Participant updates its own state state[q] according to the actual state
 pp of p \in Participant extracted from a message m \in Message it receives. 
@@ -126,7 +128,7 @@ Accept(p, b, v) ==
             /\ \A r \in Participant: state[p][q].maxVBal >= state[p][r].maxVBal
     /\ state' = [state EXCEPT ![p][p].maxVBal = b,
                               ![p][p].maxVVal = v]
-    /\ Send([from |-> p, to |-> Participant, state |-> state'[p]])
+    /\ Send([from |-> p, to |-> Participant \ {p}, state |-> state'[p]])
 ---------------------------------------------------------------------------
 Next == \E p \in Participant : \/ OnMessage(p)
                                \/ \E b \in Ballot : \/ Prepare(p, b)
@@ -143,6 +145,24 @@ chosen == UNION {ChosenP(p) : p \in Participant}
 Consistency == Cardinality(chosen) <= 1         
 
 THEOREM Spec => []Consistency
+---------------------------------------------------------------------------
+(*
+For checking Liveness
+WF(A): if A ever becomes enabled, then an A step will eventually occur-even 
+if A remains enabled for only a fraction of a nanosecond and is never again
+enabled. 
+Liveness in TPaxos: like paxos, there should be a single-leader to prapre
+and accept.
+*)
+LSpec == /\ Spec
+         /\ \E p \in Participant:
+            /\ MaxBallot \in Bals(p)
+            /\ WF_vars(Prepare(p, MaxBallot))
+            /\ \A v \in Value: WF_vars(Accept(p, MaxBallot, v))
+            /\ \E Q \in Quorum:
+                \A q \in Q: WF_vars(OnMessage(q))
+
+Liveness == <>(chosen # {})
 =============================================================================
 \* Modification History
 \* Last modified Mon Sep 09 15:59:38 CST 2019 by stary
