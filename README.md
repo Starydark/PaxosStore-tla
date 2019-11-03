@@ -22,7 +22,7 @@ While constructing specification of the consensus algorithm TPaxos in PaxosStore
 
 ### Experiment
 
-We prove the refinement relation using the method of model checking. The details refers to [experiment](https://github.com/Starydark/Paxosstore-tla/experiment).
+We prove the refinement relation using the method of model checking. The details refers to [experiment](./experiment).
 
 
 ### Others
