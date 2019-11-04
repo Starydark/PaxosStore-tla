@@ -154,13 +154,15 @@ enabled.
 Liveness in TPaxos: like paxos, there should be a single-leader to prapre
 and accept.
 *)
-LSpec == /\ Spec
-         /\ \E p \in Participant:
-            /\ MaxBallot \in Bals(p)
-            /\ WF_vars(Prepare(p, MaxBallot))
-            /\ \A v \in Value: WF_vars(Accept(p, MaxBallot, v))
-            /\ \E Q \in Quorum:
-                \A q \in Q: WF_vars(OnMessage(q))
+
+LConstrain == /\ \E p \in Participant:
+                /\ MaxBallot \in Bals(p)
+                /\ WF_vars(Prepare(p, MaxBallot))
+                /\ \A v \in Value: WF_vars(Accept(p, MaxBallot, v))
+                /\ \E Q \in Quorum:
+                    \A q \in Q: WF_vars(OnMessage(q))
+
+LSpec == Spec /\ LConstrain
 
 Liveness == <>(chosen # {})
 =============================================================================
