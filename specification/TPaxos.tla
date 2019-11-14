@@ -160,7 +160,8 @@ LConstrain == /\ \E p \in Participant:
                 /\ WF_vars(Prepare(p, MaxBallot))
                 /\ \A v \in Value: WF_vars(Accept(p, MaxBallot, v))
                 /\ \E Q \in Quorum:
-                    \A q \in Q: WF_vars(OnMessage(q))
+                    /\ p \in Q
+                    /\ \A q \in Q: WF_vars(OnMessage(q))
 
 LSpec == Spec /\ LConstrain
 
