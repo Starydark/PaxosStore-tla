@@ -1,4 +1,4 @@
-% file: tlc-op-awset-table.tex
+% file: tlc-tpaxos.tex
 \documentclass[a4paper]{article}
 \usepackage{ctex}
 \usepackage{pdfpages}
@@ -25,7 +25,6 @@
 	\begin{table}[t]
 		\caption{Model checking results of verifying that TPaxos satisfies Consistency}
 		\label{tbl:tlc-opawset}
-		%\title{Model checking results of verifying that TPaxos satisfies Consistency}
 		\resizebox{\textwidth}{!}{%
 			\centering
 			\renewcommand*{\arraystretch}{1.1}
@@ -68,8 +67,57 @@
 			\end{tabular}%
 		}
 	\end{table}
+
 	\begin{table}[t]
-		%\caption{Model checking results of verifying that OpAWSet satisfies $SEC$.}
+		\caption{Model checking results of verifying that TPaxos satisfies Liveness}
+		\label{tbl:tlc-opawset}
+		
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $15$       & $385$            & $275$            & $0:00:01$    \\ \hline
+				$(2, 2, 3)$     & $22$       & $27366$        & $13684$        & $0:00:02$    \\ \hline
+				$(2, 4, 2)$     & $15$       & $735$            & $523$           & $0:00:01$    \\ \hline
+				$(2, 4, 3)$     & $22$       & $54192$        & $27042$        & $0:00:03$    \\ \hline
+				$(3, 2, 2)$     & $34$       & $206443509$        & $62284985$        & $2:27:08$    \\ \hline
+				%$(3, 2, 3)$     & $19$       & $274590666$        & $101397482$        & $0:42:03$    \\ \hline
+				$(3, 4, 2)$     & $34$       & $444157073$        & $134403809$        & $6:21:41$    \\ \hline
+				%$(3, 4, 3)$     & $17$       & $278887421$        & $100000024$        & $2:28:05$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+
+	\begin{table}[t]
+		\caption{Model checking results of verifying that TPaxosAP satisfies Liveness}
+		\label{tbl:tlc-opawset}
+		
+		\resizebox{\textwidth}{!}{%
+			\centering
+			\renewcommand*{\arraystretch}{1.1}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{\incell{TLC模型}{(参与者数量, 提议值个数,投票轮数)}} & \textbf{状态图直径} & \textbf{状态数} & \textbf{不同状态数} 
+				& \textbf{\incell{检验时间}{$(hh:mm:ss)$}} \\ \hline
+				\hline
+				$(2, 2, 2)$     & $15$       & $385$            & $275$            & $0:00:01$    \\ \hline
+				$(2, 2, 3)$     & $22$       & $27372$        & $13684$        & $0:00:02$    \\ \hline
+				$(2, 4, 2)$     & $15$       & $735$            & $523$           & $0:00:01$    \\ \hline
+				$(2, 4, 3)$     & $22$       & $54204$        & $27042$        & $0:00:02$    \\ \hline
+				$(3, 2, 2)$     & $34$       & $206248747$        & $62215595$        & $1:17:38$    \\ \hline
+				%$(3, 2, 3)$     & $19$       & $274590666$        & $101397482$        & $0:42:03$    \\ \hline
+				$(3, 4, 2)$     & $34$       & $442881157$        & $133987469$        & $16:28:41$    \\ \hline
+				%$(3, 4, 3)$     & $17$       & $278887421$        & $100000024$        & $2:28:05$    \\ \hline
+			\end{tabular}%
+		}
+	\end{table}
+
+	\begin{table}[t]
+		\caption{Model checking results of verifying that TPaxos refines Voting.}
 		\label{tbl:tlc-opawset}
 		\title{text}
 		\resizebox{\textwidth}{!}{%
@@ -92,7 +140,7 @@
 		}
 	\end{table}
 	\begin{table}[t]
-		%\caption{Model checking results of verifying that OpAWSet satisfies $SEC$.}
+		\caption{Model checking results of verifying that TPaxosAP refines EagerVoting.}
 		\label{tbl:tlc-opawset}
 		\resizebox{\textwidth}{!}{%
 			\centering
