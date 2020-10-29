@@ -1,6 +1,6 @@
 # Paxosstore-tla
 
-A project of using <a href="http://lamport.azurewebsites.net/tla/tla.html">TLA<sup>+</sup> files</a> to model check the correctness of the consensus algorithm in the [PaxosStore@VLDB2017](http://www.vldb.org/pvldb/vol10/p1730-lin.pdf) paper and the open-source [Tencent/paxosstore](https://github.com/Tencent/paxosstore).
+A project of using <a href="http://lamport.azurewebsites.net/tla/tla.html">TLA<sup>+</sup></a> to model check and  prove the correctness of the consensus algorithm in the [PaxosStore@VLDB2017](http://www.vldb.org/pvldb/vol10/p1730-lin.pdf) paper and the open-source [Tencent/paxosstore](https://github.com/Tencent/paxosstore).
 
 ### Specification
 
@@ -19,6 +19,10 @@ While constructing specification of the consensus algorithm TPaxos in PaxosStore
 #### Refinement relation
 
 ![RefinementRelation](./specification/fig/RefinementRelation.png)
+
+### [Theorem Proving](./theorem%20proving/)
+
+We prove the correctness of TPaxos using <a href="http://tla.msr-inria.inria.fr/tlaps/content/Home.html">TLAPS</a>(a internal proof system of TLA+). While writing the proof of TPaxos, we make some small changes on the specification which won't introduce additional rules but only made our proof not too complicated.
 
 ### Experiment
 
