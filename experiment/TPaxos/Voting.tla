@@ -56,7 +56,10 @@ Next == \E a \in Acceptor, b \in Ballot :
 
 Spec == Init /\ [][Next]_<<votes, maxBal>>
 -----------------------------------------------------------------------------
+V == INSTANCE EagerVoting WITH maxBal <- maxBal,
+                                votes <- votes
 
+THEOREM Spec => V!Spec
 ------------------------------------------------------------------------------
 ChosenAt(b, v) == 
     \E Q \in Quorum : \A a \in Q : VotedFor(a, b, v)
